@@ -34,8 +34,8 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.configureView()
 
-        let signal : SignalProducer<String, NoError> = 
-        Property(viewModel.temp).producter
+//        let signal : SignalProducer<String, NoError> = 
+//        Property(viewModel.temp).producter
 //        tempLabel.reactive.text  <~ viewModel.temp
         
 //        viewModel.temp.map { "\($0)" }.bind(to:tempLabel)
