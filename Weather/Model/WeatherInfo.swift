@@ -34,6 +34,7 @@ struct WeatherInfo {
     var rain : String?
     var snow : String?
     
+    var city : String?
     var visibility : Int?
     var udpatedDate : Date?
 }
@@ -63,6 +64,7 @@ extension WeatherInfo {
         self.pressure = main["pressure"].doubleValue
 
         self.visibility = json["visibility"].intValue
+        self.city = json["name"].stringValue
         
         let wind = json["wind"]
         if wind != JSON.null {

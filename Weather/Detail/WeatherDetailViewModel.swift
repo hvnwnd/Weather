@@ -25,7 +25,7 @@ class WeatherDetailViewModel {
     
     var humidity : String?
     
-    var label : String?
+    var weatherLabel : String?
     var description : String?
     
     var cloud : String?
@@ -36,10 +36,35 @@ class WeatherDetailViewModel {
     
     var visibility : String?
     var udpatedDate : Date?
+    var city : String?
+    
+    init?(_ weather : WeatherInfo) {
+        if let temp = weather.temp {
+            self.temp = "\(temp)º"
+        }
         
-    init() {
-        RequestManager().fetchCurrentWeather("paris,fr") { info in
-            print(info.temp)
+        if let minTemp = weather.tempMin {
+            self.tempMin = "\(minTemp)º"
+        }
+        
+        if let maxTemp = weather.tempMax {
+            self.tempMax = "\(maxTemp)º"
+        }
+        
+        if let label = weather.label {
+            self.weatherLabel = label
+        }
+        
+        if let city = weather.city {
+            self.city = city
+        }
+    }
+    
+    class func fetchWeather( _ city: String, completion : @escaping (_ weatherViewModel : WeatherDetailViewModel) -> () ) {
+        RequestManager().fetchCurrentWeather(city) { info in
+            if let viewModel = WeatherDetailViewModel(info) {
+                completion(viewModel)
+            }
         }
     }
 }

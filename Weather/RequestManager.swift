@@ -35,13 +35,15 @@ class RequestManager {
             "appid" : apikey,
             "q" : cityname]
         
-        Alamofire.request(URL+service, method: .get, parameters: params).responseData { response in
+        let request = Alamofire.request(URL+service, method: .get, parameters: params).responseData { response in
             if let data = response.result.value{
                 completion(data)
             }else {
                 // errors
             }
         }
+        
+        debugPrint(request)
     }
 
 }

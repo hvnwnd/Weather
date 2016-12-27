@@ -7,18 +7,29 @@
 //
 
 import UIKit
-import ReactiveCocoa
-import ReactiveSwift
-import Result
 
 class DetailViewController: UIViewController {
     @IBOutlet weak var tempLabel : UILabel!
-    @IBOutlet weak var cityLabel : UILabel!
+    @IBOutlet weak var tempMinLabel : UILabel!
+    @IBOutlet weak var tempMaxLabel : UILabel!
     
+    @IBOutlet weak var cityLabel : UILabel!
+    @IBOutlet weak var weatherLabel : UILabel!
+    
+    @IBOutlet weak var weatherImage : UIImageView?
     
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
-    var viewModel = WeatherDetailViewModel()
+    var viewModel : WeatherDetailViewModel? {
+        didSet {
+            tempLabel.text = viewModel?.temp
+            tempMinLabel.text = viewModel?.tempMin
+            tempMaxLabel.text = viewModel?.tempMax
+            weatherLabel.text = viewModel?.weatherLabel
+            cityLabel.text = viewModel?.city
+        }
+
+    }
 
     func configureView() {
         // Update the user interface for the detail item.
@@ -34,11 +45,9 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.configureView()
 
-        let signal : SignalProducer<String, NoError> = 
-        Property(viewModel.temp).producter
-//        tempLabel.reactive.text  <~ viewModel.temp
-        
-//        viewModel.temp.map { "\($0)" }.bind(to:tempLabel)
+        WeatherDetailViewModel.fetchWeather("lyon, fr") { viewModel in
+            self.viewModel = viewModel
+        }
         
     }
 
