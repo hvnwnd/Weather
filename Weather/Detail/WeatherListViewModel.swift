@@ -12,8 +12,14 @@ class WeatherListViewModel {
     class func fetch5DaysWeather(_ city: String, completion: @escaping ( [WeatherCellViewModel] ) -> Void ) {
         RequestManager().fetch5daysWeather(city) { listWeatherInfo in
             var tempDict = [Date : [WeatherInfo]]()
+            let today = Date().startOfDay()
             for weatherInfo in listWeatherInfo {
+                
                 let date = weatherInfo.updatedDate?.startOfDay()
+                
+                if today == date {
+                    continue
+                }
                 var arr = tempDict[date!]
                 if arr != nil {
                     arr!.append(weatherInfo)

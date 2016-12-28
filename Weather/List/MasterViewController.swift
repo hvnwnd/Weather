@@ -17,15 +17,17 @@ class MasterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
-
+        
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         
-        WeatherListViewModel.fetch5DaysWeather("Paris, fr") { listCellViewModel in
+        let city = "Paris"
+        
+        self.title = city
+        
+        WeatherListViewModel.fetch5DaysWeather("\(city), fr") { listCellViewModel in
             self.listCellViewModel = listCellViewModel
             self.tableView.reloadData()
         }

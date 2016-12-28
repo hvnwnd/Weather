@@ -8,26 +8,13 @@
 
 import Foundation
 
-extension Sequence where Self.Iterator.Element: Equatable {
-    private typealias Element = Self.Iterator.Element
-    
-    func mostOccurance() -> Element {
-        
-        let empty: [(Element, Int)] = []
-        
-        var temp = reduce(empty) { (accu: [(Element, Int)], element) in
-            var accu = accu
-            for (index, value) in accu.enumerated() {
-                if value.0 == element {
-                    accu[index].1 += 1
-                    return accu
-                }
-            }
-            
-            return accu + [(element, 1)]
-        }
-        // Fixme: sort by number 
-        return temp[0].0
+extension Array where Element: Hashable {
+    var mode: Element? {
+        return self.reduce([Element: Int]()) {
+            var counts = $0
+            counts[$1] = ($0[$1] ?? 0) + 1
+            return counts
+            }.max { $0.1 < $1.1 }?.0
     }
 }
 
@@ -50,9 +37,8 @@ extension DayInfo {
         self.tempMax = list.reduce(Int.min){ max($0, $1.tempMax!) }
         self.tempMin = list.reduce(Int.max){ min($0, $1.tempMin!) }
         
-        self.icon = (list.map{ $0.icon} as! [String] ).mostOccurance()
-        self.weatherLabel = (list.map{ $0.weatherLabel } as! [String]).mostOccurance()
-    
+        self.icon = (list.map{ $0.icon} as! [String] ).mode
+        self.weatherLabel = (list.map{ $0.weatherLabel } as! [String]).mode
     }
 }
 
