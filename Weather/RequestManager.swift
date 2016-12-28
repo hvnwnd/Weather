@@ -8,9 +8,11 @@
 
 import Foundation
 import Alamofire
+import AlamofireImage
 import SwiftyJSON
 
 class RequestManager {
+    static let ImageBaseUrl = "http://openweathermap.org/img/w/"
     
     let informationPerDay : Int = 8
     let URL = "http://api.openweathermap.org/data/2.5/"

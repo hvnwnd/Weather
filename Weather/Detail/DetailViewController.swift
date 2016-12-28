@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class DetailViewController: UIViewController {
     @IBOutlet weak var tempLabel : UILabel!
@@ -16,7 +17,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var cityLabel : UILabel!
     @IBOutlet weak var weatherLabel : UILabel!
     
-    @IBOutlet weak var weatherImage : UIImageView?
+    @IBOutlet weak var weatherImageView : UIImageView!
     
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
@@ -27,6 +28,9 @@ class DetailViewController: UIViewController {
             tempMaxLabel.text = viewModel?.tempMax
             weatherLabel.text = viewModel?.weatherLabel
             cityLabel.text = viewModel?.city
+            
+            let url = URL(string: RequestManager.ImageBaseUrl + (viewModel?.icon)! + ".png")
+            weatherImageView.af_setImage(withURL: url!)
         }
 
     }

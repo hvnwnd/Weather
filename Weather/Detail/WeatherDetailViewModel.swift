@@ -58,6 +58,8 @@ class WeatherDetailViewModel {
         if let city = weather.city {
             self.city = city
         }
+        
+        self.icon = weather.icon
     }
     
     class func fetchWeather( _ city: String, completion : @escaping (_ weatherViewModel : WeatherDetailViewModel) -> () ) {

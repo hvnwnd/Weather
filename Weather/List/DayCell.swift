@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import AlamofireImage
 class DayCell : UITableViewCell {
     @IBOutlet weak var dayLabel : UILabel!
     @IBOutlet weak var tempMaxLabel : UILabel!
@@ -21,7 +21,7 @@ class DayCell : UITableViewCell {
         tempMinLabel.text = cellViewModel.tempMin
         weatherLabel.text = cellViewModel.weatherLabel
         
-        // TODO: manage image
-//        tempImageView.image.loadimage = cellViewModel.icon
+        let url = URL(string: RequestManager.ImageBaseUrl + cellViewModel.icon! + ".png")
+        tempImageView.af_setImage(withURL: url!)
     }
 }
