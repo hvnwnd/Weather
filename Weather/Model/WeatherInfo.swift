@@ -25,7 +25,7 @@ struct WeatherInfo {
     
     var humidity : Int?
     
-    var label : String?
+    var weatherLabel : String?
     var description : String?
     
     var cloud : String?
@@ -36,14 +36,13 @@ struct WeatherInfo {
     
     var city : String?
     var visibility : Int?
-    var udpatedDate : Date?
+    var updatedDate : Date?
 }
 
 extension WeatherInfo {
     
-    init?(_ data : Data) {
+    init?(_ json : JSON) {
         
-        let json = JSON(data: data)
         self.identifier = json["id"].stringValue
         
         guard identifier != nil else {
@@ -51,7 +50,7 @@ extension WeatherInfo {
         }
         
         let weather = json["weather"][0]
-        self.label = weather["main"].stringValue
+        self.weatherLabel = weather["main"].stringValue
         self.description = weather["description"].stringValue
         self.icon = weather["icon"].stringValue
         
@@ -75,5 +74,11 @@ extension WeatherInfo {
         self.cloud = json["cloud"]["all"].stringValue
         self.rain = json["rain"].stringValue
         self.snow = json["snow"].stringValue
+        
+        self.updatedDate = Date.init(timeIntervalSince1970: TimeInterval(json["dt"].intValue))
+    }
+    
+    func isSameDay( anotherInfo : WeatherInfo) -> Bool {
+        return self.updatedDate!.startOfDay() == anotherInfo.updatedDate?.startOfDay()
     }
 }

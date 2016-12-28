@@ -51,7 +51,7 @@ class WeatherDetailViewModel {
             self.tempMax = "\(maxTemp)º"
         }
         
-        if let label = weather.label {
+        if let label = weather.weatherLabel {
             self.weatherLabel = label
         }
         

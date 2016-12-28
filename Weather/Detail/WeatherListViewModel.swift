@@ -7,11 +7,28 @@
 //
 
 import Foundation
-
 class WeatherListViewModel {
-    init() {
-//        RequestManager().fetch5daysWeather(cityName: "paris,fr") { 
-//            print("done")
-//        }
+    
+    class func fetch5DaysWeather(_ city: String, completion: @escaping ( [WeatherCellViewModel] ) -> Void ) {
+        RequestManager().fetch5daysWeather(city) { listWeatherInfo in
+            var tempDict = [Date : [WeatherInfo]]()
+            for weatherInfo in listWeatherInfo {
+                let date = weatherInfo.updatedDate?.startOfDay()
+                var arr = tempDict[date!]
+                if arr != nil {
+                    arr!.append(weatherInfo)
+                    tempDict[date!] = arr
+                }else{
+                    tempDict[date!] = [weatherInfo]
+                }
+            }
+            
+            let result = tempDict.map({ (key: Date, value: [WeatherInfo]) -> DayInfo in
+                return DayInfo(value)
+            }).sorted(by: { $0.date! < $1.date! })
+                .map{ WeatherCellViewModel($0) }
+            
+            completion(result)
+        }
     }
 }
