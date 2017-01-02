@@ -18,6 +18,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var weatherLabel : UILabel!
     
     @IBOutlet weak var weatherImageView : UIImageView!
+    @IBOutlet weak var windSpeedLabel : UILabel!
+    @IBOutlet weak var windDirectionLabel : UILabel!
+    @IBOutlet weak var humidiyLabel : UILabel!
     
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
@@ -28,6 +31,9 @@ class DetailViewController: UIViewController {
             tempMaxLabel.text = viewModel?.tempMax
             weatherLabel.text = viewModel?.weatherLabel
             cityLabel.text = viewModel?.city
+            windSpeedLabel.text = viewModel?.windSpeed
+            windDirectionLabel.text = viewModel?.windDegree
+            humidiyLabel.text = viewModel?.humidity
             
             let url = URL(string: RequestManager.ImageBaseUrl + (viewModel?.icon)! + ".png")
             weatherImageView.af_setImage(withURL: url!)
@@ -47,7 +53,6 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.configureView()
 
         WeatherDetailViewModel.fetchWeather("lyon, fr") { viewModel in
             self.viewModel = viewModel

@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AlamofireImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Weather.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,12 +42,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>07B43BA947D5C2D69F0535210B539A56</key>
+		<key>18E840DD3A900683F2580A580C82AA8B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6E7D8C8BAF0BA85A72C795E63FF1C954</key>
+		<key>1D69F20F6EEC710ACB3D67EF09927B2F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>54DFA0BF059CC3CC267F0FB523CBAA59</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,17 +62,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>94514EF11C3F50B56711AC15E3BCD46F</key>
+		<key>8E32D5BE27E76DC44A05119159C56A19</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A77C9B73549DBB9936138B53B231CA4A</key>
+		<key>9EFE4C70245EE2857D336B8B9FA4E825</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C122EC3EC5376413C74226BADF86F59C</key>
+		<key>D14E29F293A60FE5A47CC5EF796DD96B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

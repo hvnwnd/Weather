@@ -27,7 +27,9 @@ class WeatherCellViewModel {
         
         self.weatherLabel = dayInfo.weatherLabel
         
-        self.day = dayInfo.date!.dayOfWeek()
+        if let date = dayInfo.date {
+            self.day = date.dayOfWeek()
+        }
         
         self.icon = dayInfo.icon
     }

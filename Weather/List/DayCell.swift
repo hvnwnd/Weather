@@ -8,6 +8,7 @@
 
 import UIKit
 import AlamofireImage
+
 class DayCell : UITableViewCell {
     @IBOutlet weak var dayLabel : UILabel!
     @IBOutlet weak var tempMaxLabel : UILabel!
@@ -15,13 +16,17 @@ class DayCell : UITableViewCell {
     @IBOutlet weak var weatherLabel : UILabel!
     @IBOutlet weak var tempImageView : UIImageView!
 
-    func setViewModel ( _ cellViewModel : WeatherCellViewModel) {
-        dayLabel.text = cellViewModel.day
-        tempMaxLabel.text = cellViewModel.tempMax
-        tempMinLabel.text = cellViewModel.tempMin
-        weatherLabel.text = cellViewModel.weatherLabel
-        
-        let url = URL(string: RequestManager.ImageBaseUrl + cellViewModel.icon! + ".png")
-        tempImageView.af_setImage(withURL: url!)
+    var viewModel : WeatherCellViewModel? {
+        didSet {
+            dayLabel.text = viewModel?.day
+            tempMaxLabel.text = viewModel?.tempMax
+            tempMinLabel.text = viewModel?.tempMin
+            weatherLabel.text = viewModel?.weatherLabel
+            
+            if let icon = viewModel?.icon {
+                let url = URL(string: RequestManager.ImageBaseUrl + icon + ".png")
+                tempImageView.af_setImage(withURL: url!)
+            }
+        }
     }
 }

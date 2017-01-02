@@ -61,7 +61,7 @@ class MasterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! DayCell
 
         if let cellViewModel = listCellViewModel?[indexPath.row] {
-            cell.setViewModel(cellViewModel)
+            cell.viewModel = cellViewModel
         }
         
         return cell

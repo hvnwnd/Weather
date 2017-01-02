@@ -38,7 +38,7 @@ extension DayInfo {
         self.tempMin = list.reduce(Int.max){ min($0, $1.tempMin!) }
         
         self.icon = (list.map{ $0.icon} as! [String] ).mode
-        self.weatherLabel = (list.map{ $0.weatherLabel } as! [String]).mode
+        self.weatherLabel = (list.map{ $0.weatherLabel! }).mode
     }
 }
 

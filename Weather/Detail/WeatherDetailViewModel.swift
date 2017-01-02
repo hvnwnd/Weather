@@ -8,11 +8,9 @@
 
 import Foundation
 
-protocol WeatherDetailViewModelDelegate {
-    
-}
 
 class WeatherDetailViewModel {
+    
     var temp : String?
     var tempMax : String?
     var tempMin : String?
@@ -20,8 +18,6 @@ class WeatherDetailViewModel {
     var icon : String?
     
     var pressure : Double?
-    var seaPressure : Double?
-    var grdPressure : Double?
     
     var humidity : String?
     
@@ -29,8 +25,8 @@ class WeatherDetailViewModel {
     var description : String?
     
     var cloud : String?
-    var windSpeed : Double?
-    var windDegree : Double?
+    var windSpeed : String?
+    var windDegree : String?
     var rain : String?
     var snow : String?
     
@@ -57,6 +53,48 @@ class WeatherDetailViewModel {
         
         if let city = weather.city {
             self.city = city
+        }
+        
+        if let humidity = weather.humidity {
+            self.humidity = "\(humidity)%"
+        }
+        
+        if let windSpeed = weather.windSpeed {
+            self.windSpeed = "\(windSpeed) m/s"
+        }
+        
+        if let windDegree = weather.windDegree {
+            let northeast = 56.25
+            let southeast = 123.75
+            let southwest = 236.75
+            let northwest = 303.75
+            
+            if windDegree > northeast && windDegree <= southeast {
+                self.windDegree = "East"
+            }else if windDegree > southeast && windDegree <= southwest {
+                self.windDegree = "South"
+            }else if windDegree > southwest && windDegree <= northwest {
+                self.windDegree = "West"
+            }else {
+                self.windDegree = "North"
+            }
+        }
+        
+        if let rain = weather.rain {
+            self.rain = rain
+        }
+        
+        if let snow = weather.snow {
+            self.snow = snow
+        }
+        
+        if let cloud = weather.cloud {
+            self.cloud = cloud
+        }
+        
+        if let distanceOfVisibility = weather.visibility {
+            let distanceOfVisibilityInKm = distanceOfVisibility / 1000
+            self.visibility = "\(distanceOfVisibilityInKm)km"
         }
         
         self.icon = weather.icon
