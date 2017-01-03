@@ -64,20 +64,7 @@ class WeatherDetailViewModel {
         }
         
         if let windDegree = weather.windDegree {
-            let northeast = 56.25
-            let southeast = 123.75
-            let southwest = 236.75
-            let northwest = 303.75
-            
-            if windDegree > northeast && windDegree <= southeast {
-                self.windDegree = "East"
-            }else if windDegree > southeast && windDegree <= southwest {
-                self.windDegree = "South"
-            }else if windDegree > southwest && windDegree <= northwest {
-                self.windDegree = "West"
-            }else {
-                self.windDegree = "North"
-            }
+            self.windDegree = windDirection(windDegree)
         }
         
         if let rain = weather.rain {
@@ -106,5 +93,24 @@ class WeatherDetailViewModel {
                 completion(viewModel)
             }
         }
+    }
+    
+    func windDirection(_ degree : Double) -> String {
+        let northeast = 56.25
+        let southeast = 123.75
+        let southwest = 236.75
+        let northwest = 303.75
+        
+        var direction : String
+        if degree > northeast && degree <= southeast {
+            direction = "East"
+        }else if degree > southeast && degree <= southwest {
+            direction = "South"
+        }else if degree > southwest && degree <= northwest {
+            direction = "West"
+        }else {
+            direction = "North"
+        }
+        return direction
     }
 }

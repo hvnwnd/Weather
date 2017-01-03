@@ -35,7 +35,7 @@ class DetailViewController: UIViewController {
             windDirectionLabel.text = viewModel?.windDegree
             humidiyLabel.text = viewModel?.humidity
             
-            let url = URL(string: RequestManager.ImageBaseUrl + (viewModel?.icon)! + ".png")
+            let url = URL(string: RequestUrl.imageBaseUrl + (viewModel?.icon)! + ".png")
             weatherImageView.af_setImage(withURL: url!)
         }
 
@@ -54,7 +54,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        WeatherDetailViewModel.fetchWeather("lyon, fr") { viewModel in
+        WeatherDetailViewModel.fetchWeather("paris, fr") { viewModel in
             self.viewModel = viewModel
         }
         

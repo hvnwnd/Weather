@@ -10,22 +10,30 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
+struct RequestVerb {
+    static let oneDayDetail = "weather"
+    static let fiveDayForecast = "forecast"
+}
+
+struct RequestUrl {
+    static let imageBaseUrl = "http://openweathermap.org/img/w/"
+    static let requestBaseUrl = "http://api.openweathermap.org/data/2.5/"
+}
+
 class RequestManager {
-    static let ImageBaseUrl = "http://openweathermap.org/img/w/"
-    
+
     let informationPerDay : Int = 8
-    let URL = "http://api.openweathermap.org/data/2.5/"
     let apikey = "d94ee8adc1c915e4a7bf965be033e6cb"
     
     func fetch5daysWeather(_ cityname: String, completion : @escaping (_ list:[WeatherInfo])->Void ) {
-        request("forecast", cityname:cityname) { json in
+        request(RequestVerb.fiveDayForecast, cityname:cityname) { json in
             let list = json["list"]
             completion(list.map{ WeatherInfo($0.1)! })
         }
     }
 
     func fetchCurrentWeather(_ cityname: String, completion : @escaping (_ info: WeatherInfo)->Void ) {
-        request("weather", cityname:cityname) { json in
+        request(RequestVerb.oneDayDetail, cityname:cityname) { json in
             if let info = WeatherInfo(json) {
                 completion(info)
             }
@@ -33,11 +41,8 @@ class RequestManager {
     }
     
     private func request(_ service : String, cityname : String, completion: @escaping (_ json : JSON)->Void ) {
-        let params = ["units" : "metric",
-            "appid" : apikey,
-            "q" : cityname]
         
-        let request = Alamofire.request(URL+service, method: .get, parameters: params).responseData { response in
+        let request = Alamofire.request(RequestUrl.requestBaseUrl+service, method: .get, parameters: params(cityname)).responseData { response in
             switch response.result {
             case .success(let data):
                 let json = JSON(data: data)
@@ -49,6 +54,12 @@ class RequestManager {
         debugPrint(request)
     }
 
+    private func params(_ city : String) -> [String : Any]  {
+        return ["units" : "metric",
+                "appid" : apikey,
+                    "q" : city]
+    }
+    
     private func handle( error : Error) {
         print(error.localizedDescription)
     }

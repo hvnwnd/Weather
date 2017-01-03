@@ -15,7 +15,8 @@ class WeatherCellViewModel {
     
     var icon : String?
     var weatherLabel : String?
-    
+    var bgImageName : String?
+
     init(_ dayInfo : DayInfo){
         if let tmp = dayInfo.tempMax {
             tempMax = "\(tmp)°"
@@ -32,5 +33,6 @@ class WeatherCellViewModel {
         }
         
         self.icon = dayInfo.icon
+        self.bgImageName = weatherLabel?.lowercased()
     }
 }
