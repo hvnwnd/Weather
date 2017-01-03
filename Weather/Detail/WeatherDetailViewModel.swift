@@ -7,84 +7,83 @@
 //
 
 import Foundation
-
+import Bond
 
 class WeatherDetailViewModel {
     
-    var temp : String?
-    var tempMax : String?
-    var tempMin : String?
+    var temp = Observable<String?>("")
+    var tempMax = Observable<String?>("")
+    var tempMin = Observable<String?>("")
     
-    var icon : String?
+    var icon = Observable<String?>("")
     
-    var pressure : Double?
+    var pressure = Observable<String?>("")
     
-    var humidity : String?
+    var humidity = Observable<String?>("")
     
-    var weatherLabel : String?
-    var description : String?
+    var weatherLabel = Observable<String?>("")
+    var description = Observable<String?>("")
     
-    var cloud : String?
-    var windSpeed : String?
-    var windDegree : String?
-    var rain : String?
-    var snow : String?
+    var cloud = Observable<String?>("")
+    var windSpeed = Observable<String?>("")
+    var windDegree = Observable<String?>("")
+    var rain = Observable<String?>("")
+    var snow = Observable<String?>("")
     
-    var visibility : String?
-    var udpatedDate : Date?
-    var city : String?
+    var visibility = Observable<String?>("")
+    var city = Observable<String?>("")
     
     init?(_ weather : WeatherInfo) {
         if let temp = weather.temp {
-            self.temp = "\(temp)º"
+            self.temp.value = "\(temp)º"
         }
         
         if let minTemp = weather.tempMin {
-            self.tempMin = "\(minTemp)º"
+            self.tempMin.value = "\(minTemp)º"
         }
         
         if let maxTemp = weather.tempMax {
-            self.tempMax = "\(maxTemp)º"
+            self.tempMax.value = "\(maxTemp)º"
         }
         
         if let label = weather.weatherLabel {
-            self.weatherLabel = label
+            self.weatherLabel.value = label
         }
         
         if let city = weather.city {
-            self.city = city
+            self.city.value = city
         }
         
         if let humidity = weather.humidity {
-            self.humidity = "\(humidity)%"
+            self.humidity.value = "\(humidity)%"
         }
         
         if let windSpeed = weather.windSpeed {
-            self.windSpeed = "\(windSpeed) m/s"
+            self.windSpeed.value = "\(windSpeed) m/s"
         }
         
         if let windDegree = weather.windDegree {
-            self.windDegree = windDirection(windDegree)
+            self.windDegree.value = windDirection(windDegree)
         }
         
         if let rain = weather.rain {
-            self.rain = rain
+            self.rain.value = rain
         }
         
         if let snow = weather.snow {
-            self.snow = snow
+            self.snow.value = snow
         }
         
         if let cloud = weather.cloud {
-            self.cloud = cloud
+            self.cloud.value = cloud
         }
         
         if let distanceOfVisibility = weather.visibility {
             let distanceOfVisibilityInKm = distanceOfVisibility / 1000
-            self.visibility = "\(distanceOfVisibilityInKm)km"
+            self.visibility.value = "\(distanceOfVisibilityInKm)km"
         }
         
-        self.icon = weather.icon
+        self.icon.value = weather.icon
     }
     
     class func fetchWeather( _ city: String, completion : @escaping (_ weatherViewModel : WeatherDetailViewModel) -> () ) {

@@ -8,6 +8,7 @@
 
 import UIKit
 import AlamofireImage
+import Bond
 
 class DetailViewController: UIViewController {
     @IBOutlet weak var tempLabel : UILabel!
@@ -26,17 +27,19 @@ class DetailViewController: UIViewController {
 
     var viewModel : WeatherDetailViewModel? {
         didSet {
-            tempLabel.text = viewModel?.temp
-            tempMinLabel.text = viewModel?.tempMin
-            tempMaxLabel.text = viewModel?.tempMax
-            weatherLabel.text = viewModel?.weatherLabel
-            cityLabel.text = viewModel?.city
-            windSpeedLabel.text = viewModel?.windSpeed
-            windDirectionLabel.text = viewModel?.windDegree
-            humidiyLabel.text = viewModel?.humidity
+            viewModel?.temp.bind(to: tempLabel.bnd_text)
+            viewModel?.tempMin.bind(to: tempMinLabel.bnd_text)
+            viewModel?.tempMax.bind(to: tempMaxLabel.bnd_text)
+            viewModel?.weatherLabel.bind(to: weatherLabel.bnd_text)
+            viewModel?.city.bind(to: cityLabel.bnd_text)
+            viewModel?.windSpeed.bind(to: windSpeedLabel.bnd_text)
+            viewModel?.windDegree.bind(to: windDirectionLabel.bnd_text)
+            viewModel?.humidity.bind(to: humidiyLabel.bnd_text)
             
-            let url = URL(string: RequestUrl.imageBaseUrl + (viewModel?.icon)! + ".png")
-            weatherImageView.af_setImage(withURL: url!)
+            viewModel?.icon.observeNext(with: { (icon) in
+                let url = URL(string: RequestUrl.imageBaseUrl + icon! + ".png")
+                self.weatherImageView.af_setImage(withURL: url!)
+            }).dispose()
         }
 
     }

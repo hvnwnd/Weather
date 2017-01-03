@@ -6,6 +6,6 @@ target 'Weather' do
     pod 'Alamofire', '~> 4.0'
     pod 'AlamofireImage', '~> 3.1'
     pod 'SwiftyJSON' 
-    pod 'ReactiveCocoa', '5.0.0-alpha.6'
+    pod 'Bond' 
 end
 

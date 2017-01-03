@@ -8,6 +8,7 @@
 
 import UIKit
 import AlamofireImage
+import Bond
 
 class DayCell : UITableViewCell {
     @IBOutlet weak var bgImageView : UIImageView!
@@ -19,22 +20,23 @@ class DayCell : UITableViewCell {
 
     var viewModel : WeatherCellViewModel? {
         didSet {
-            dayLabel.text = viewModel?.day
-            tempMaxLabel.text = viewModel?.tempMax
-            tempMinLabel.text = viewModel?.tempMin
-            weatherLabel.text = viewModel?.weatherLabel
-            if let bgImageName = viewModel?.bgImageName {
-                if let image = UIImage.init(named: bgImageName) {
-                    bgImageView.image = image
+            viewModel?.day.bind(to: dayLabel.bnd_text)
+            viewModel?.tempMax.bind(to: tempMaxLabel.bnd_text)
+            viewModel?.tempMin.bind(to: tempMinLabel.bnd_text)
+            viewModel?.weatherLabel.bind(to: weatherLabel.bnd_text)
+            viewModel?.bgImageName.observeNext(with: { bgImageName in
+                if let image = UIImage.init(named: bgImageName!) {
+                    self.bgImageView.image = image
                 }else {
-                    bgImageView.image = UIImage.init(named: "clear")
+                    self.bgImageView.image = UIImage.init(named: "clear")
                 }
-            }
 
-            if let icon = viewModel?.icon {
-                let url = URL(string: RequestUrl.imageBaseUrl + icon + ".png")
-                tempImageView.af_setImage(withURL: url!)
-            }
+            }).dispose()
+
+            viewModel?.icon.observeNext(with: { icon in
+                let url = URL(string: RequestUrl.imageBaseUrl + icon! + ".png")
+                self.tempImageView.af_setImage(withURL: url!)
+            }).dispose()
         }
     }
 }

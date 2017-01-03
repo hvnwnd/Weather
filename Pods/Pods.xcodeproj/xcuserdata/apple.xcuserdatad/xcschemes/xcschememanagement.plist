@@ -14,22 +14,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Bond.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Diff.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Weather.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>ReactiveCocoa.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>ReactiveSwift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Result.xcscheme</key>
+		<key>ReactiveKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -42,17 +42,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>18E840DD3A900683F2580A580C82AA8B</key>
+		<key>0A05FB752ADF334DF2C1693D562F2B33</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1D69F20F6EEC710ACB3D67EF09927B2F</key>
+		<key>2408B0C7E818706C9E419F3A3A7DFB65</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>54DFA0BF059CC3CC267F0FB523CBAA59</key>
+		<key>3740B2760B70652CCFD7F98BC7F980CB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,7 +62,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8E32D5BE27E76DC44A05119159C56A19</key>
+		<key>8C6C7D458C57E60CFD321F9EF035A4FA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,7 +72,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D14E29F293A60FE5A47CC5EF796DD96B</key>
+		<key>C21BD8E5551C1859712F9FD0479E64D1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

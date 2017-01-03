@@ -7,32 +7,33 @@
 //
 
 import Foundation
+import Bond
 
 class WeatherCellViewModel {
-    var tempMax : String?
-    var tempMin : String?
-    var day : String?
+    var tempMax = Observable<String?>("")
+    var tempMin = Observable<String?>("")
+    var day = Observable<String?>("")
     
-    var icon : String?
-    var weatherLabel : String?
-    var bgImageName : String?
+    var icon = Observable<String?>("")
+    var weatherLabel = Observable<String?>("")
+    var bgImageName = Observable<String?>("")
 
     init(_ dayInfo : DayInfo){
         if let tmp = dayInfo.tempMax {
-            tempMax = "\(tmp)°"
+            tempMax.value = "\(tmp)°"
         }
         
         if let tmp = dayInfo.tempMin {
-            tempMin = "\(tmp)°"
+            tempMin.value = "\(tmp)°"
         }
         
-        self.weatherLabel = dayInfo.weatherLabel
+        self.weatherLabel.value = dayInfo.weatherLabel
         
         if let date = dayInfo.date {
-            self.day = date.dayOfWeek()
+            self.day.value = date.dayOfWeek()
         }
         
-        self.icon = dayInfo.icon
-        self.bgImageName = weatherLabel?.lowercased()
+        self.icon.value = dayInfo.icon
+        self.bgImageName.value = dayInfo.weatherLabel?.lowercased()
     }
 }
