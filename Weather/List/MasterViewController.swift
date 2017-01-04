@@ -17,7 +17,7 @@ class MasterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title:"Detail", style:.plain, target: self, action: #selector(showDetail(_:)))
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
@@ -41,6 +41,15 @@ class MasterViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    func showDetail (_ sender : Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+        let detailViewController = storyboard.instantiateViewController(withIdentifier: "detailNav")
+        present(detailViewController, animated: true, completion: {
+            
+        })
     }
 
     // MARK: - Table View

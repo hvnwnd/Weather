@@ -20,11 +20,11 @@ class WeatherCellViewModel {
 
     init(_ dayInfo : DayInfo){
         if let tmp = dayInfo.tempMax {
-            tempMax.value = "\(tmp)°"
+            tempMax.value = "▲\(tmp)°"
         }
         
         if let tmp = dayInfo.tempMin {
-            tempMin.value = "\(tmp)°"
+            tempMin.value = "▼\(tmp)°"
         }
         
         self.weatherLabel.value = dayInfo.weatherLabel

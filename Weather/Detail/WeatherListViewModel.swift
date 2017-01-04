@@ -18,14 +18,9 @@ class WeatherListViewModel {
     
     class func convert(_ listWeatherInfo : [WeatherInfo]) -> [WeatherCellViewModel] {
         var dayWeatherDict = [Date : [WeatherInfo]]()
-        let today = Date().startOfDay()
         for weatherInfo in listWeatherInfo {
             
             let date = weatherInfo.updatedDate?.startOfDay()
-            
-            if today == date {
-                continue
-            }
             var weatherInfoOfDay = dayWeatherDict[date!] ?? []
             weatherInfoOfDay.append(weatherInfo)
             dayWeatherDict[date!] = weatherInfoOfDay

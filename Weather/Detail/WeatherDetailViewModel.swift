@@ -39,11 +39,11 @@ class WeatherDetailViewModel {
         }
         
         if let minTemp = weather.tempMin {
-            self.tempMin.value = "\(minTemp)º"
+            self.tempMin.value = "▼\(minTemp)º"
         }
         
         if let maxTemp = weather.tempMax {
-            self.tempMax.value = "\(maxTemp)º"
+            self.tempMax.value = "▲\(maxTemp)º"
         }
         
         if let label = weather.weatherLabel {
