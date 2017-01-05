@@ -63,7 +63,7 @@ class WeatherDetailViewModel {
         }
         
         if let windDegree = weather.windDegree {
-            self.windDegree.value = windDirection(windDegree)
+            self.windDegree.value = WeatherDetailViewModel.windDirection(windDegree)
         }
         
         if let rain = weather.rain {
@@ -79,8 +79,7 @@ class WeatherDetailViewModel {
         }
         
         if let distanceOfVisibility = weather.visibility {
-            let distanceOfVisibilityInKm = distanceOfVisibility / 1000
-            self.visibility.value = "\(distanceOfVisibilityInKm)km"
+            self.visibility.value = WeatherDetailViewModel.distanceInKm(distanceOfVisibility)
         }
         
         self.icon.value = weather.icon
@@ -94,7 +93,12 @@ class WeatherDetailViewModel {
         }
     }
     
-    func windDirection(_ degree : Double) -> String {
+    class func distanceInKm (_ distance : Int) -> String {
+        let distanceInKm = Double(distance) / 1000
+        return "\(distanceInKm)km"
+    }
+    
+    class func windDirection(_ degree : Double) -> String {
         let northeast = 56.25
         let southeast = 123.75
         let southwest = 236.75

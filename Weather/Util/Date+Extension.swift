@@ -10,7 +10,7 @@ import Foundation
 
 extension Date {
     func startOfDay () -> Date {
-        let cal = Calendar(identifier: .gregorian)
+        let cal = Calendar.current
         return cal.startOfDay(for: self)
     }
     

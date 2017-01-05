@@ -9,3 +9,7 @@ target 'Weather' do
     pod 'Bond' 
 end
 
+target 'WeatherTests' do
+    pod 'Bond'
+    pod 'SwiftyJSON'
+end

@@ -22,6 +22,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var windSpeedLabel : UILabel!
     @IBOutlet weak var windDirectionLabel : UILabel!
     @IBOutlet weak var humidiyLabel : UILabel!
+    @IBOutlet weak var visibilityLabel : UILabel!
     
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
@@ -35,6 +36,7 @@ class DetailViewController: UIViewController {
             viewModel?.windSpeed.bind(to: windSpeedLabel.bnd_text)
             viewModel?.windDegree.bind(to: windDirectionLabel.bnd_text)
             viewModel?.humidity.bind(to: humidiyLabel.bnd_text)
+            viewModel?.visibility.bind(to: visibilityLabel.bnd_text)
             
             viewModel?.icon.observeNext(with: { (icon) in
                 let url = URL(string: RequestUrl.imageBaseUrl + icon! + ".png")

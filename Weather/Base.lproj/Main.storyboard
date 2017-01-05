@@ -108,6 +108,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visibility:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1g-oO-gSV">
+                                <rect key="frame" x="206" y="323" width="68" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emu-mC-IMf">
+                                <rect key="frame" x="294" y="323" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -122,21 +134,25 @@
                             <constraint firstItem="mNW-rA-fQZ" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="MPe-4o-OcY"/>
                             <constraint firstItem="czY-Hl-0Li" firstAttribute="trailing" secondItem="34z-UK-IoI" secondAttribute="trailing" id="NRY-j5-iXw"/>
                             <constraint firstItem="Kdc-B8-RGA" firstAttribute="top" secondItem="czY-Hl-0Li" secondAttribute="top" id="Osb-el-MJA"/>
+                            <constraint firstItem="T1g-oO-gSV" firstAttribute="centerY" secondItem="ElG-mS-pMd" secondAttribute="centerY" id="SrP-Wj-TwK"/>
                             <constraint firstItem="34z-UK-IoI" firstAttribute="top" secondItem="svH-Pt-448" secondAttribute="topMargin" constant="104" id="V5m-tV-ea4"/>
                             <constraint firstItem="yGe-8x-aOj" firstAttribute="leading" secondItem="oOM-7C-z5A" secondAttribute="leading" id="Vwx-Lh-bup"/>
                             <constraint firstItem="yGe-8x-aOj" firstAttribute="top" secondItem="gNO-fb-jn0" secondAttribute="bottom" constant="33" id="WbY-66-xg3"/>
+                            <constraint firstItem="T1g-oO-gSV" firstAttribute="leading" secondItem="ElG-mS-pMd" secondAttribute="trailing" constant="20" id="Ycy-Fh-dKn"/>
                             <constraint firstAttribute="trailing" secondItem="mNW-rA-fQZ" secondAttribute="trailing" id="cRZ-Uz-RyT"/>
                             <constraint firstItem="ElG-mS-pMd" firstAttribute="top" secondItem="yGe-8x-aOj" secondAttribute="top" id="cn3-7f-9mp"/>
                             <constraint firstItem="Yit-3S-F0b" firstAttribute="trailing" secondItem="czY-Hl-0Li" secondAttribute="trailing" id="eYH-2n-Tvk"/>
                             <constraint firstItem="kKq-Hb-i4W" firstAttribute="centerY" secondItem="oOM-7C-z5A" secondAttribute="centerY" id="eqw-Kx-4PW"/>
                             <constraint firstAttribute="trailing" secondItem="34z-UK-IoI" secondAttribute="trailing" constant="40" id="fQL-0u-37n"/>
                             <constraint firstItem="oOM-7C-z5A" firstAttribute="top" secondItem="svH-Pt-448" secondAttribute="topMargin" constant="104" id="fSO-oE-4Mb"/>
+                            <constraint firstItem="emu-mC-IMf" firstAttribute="leading" secondItem="T1g-oO-gSV" secondAttribute="trailing" constant="20" id="g0y-NZ-s44"/>
                             <constraint firstItem="czY-Hl-0Li" firstAttribute="top" secondItem="E9w-jg-4uq" secondAttribute="top" id="gGa-Ic-rzK"/>
                             <constraint firstItem="z8F-RQ-a6B" firstAttribute="top" secondItem="kKq-Hb-i4W" secondAttribute="bottom" constant="20" id="it7-na-99r"/>
                             <constraint firstItem="czY-Hl-0Li" firstAttribute="leading" secondItem="Kdc-B8-RGA" secondAttribute="trailing" constant="27.5" id="jdq-bc-ORw"/>
                             <constraint firstItem="z8F-RQ-a6B" firstAttribute="centerX" secondItem="kKq-Hb-i4W" secondAttribute="centerX" id="o1i-CU-VVe"/>
                             <constraint firstItem="gNO-fb-jn0" firstAttribute="trailing" secondItem="E9w-jg-4uq" secondAttribute="trailing" id="pjb-k1-bqL"/>
                             <constraint firstItem="gNO-fb-jn0" firstAttribute="top" secondItem="E9w-jg-4uq" secondAttribute="bottom" constant="8" id="tP7-mc-mRx"/>
+                            <constraint firstItem="emu-mC-IMf" firstAttribute="centerY" secondItem="T1g-oO-gSV" secondAttribute="centerY" id="wEW-9M-R3J"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -147,6 +163,7 @@
                         <outlet property="tempLabel" destination="34z-UK-IoI" id="Hfa-Hr-n4m"/>
                         <outlet property="tempMaxLabel" destination="E9w-jg-4uq" id="Ua8-sx-Nf9"/>
                         <outlet property="tempMinLabel" destination="gNO-fb-jn0" id="wjK-25-DC2"/>
+                        <outlet property="visibilityLabel" destination="emu-mC-IMf" id="9tf-sn-Nec"/>
                         <outlet property="weatherImageView" destination="kKq-Hb-i4W" id="lJ5-DE-ryC"/>
                         <outlet property="weatherLabel" destination="z8F-RQ-a6B" id="kJp-XE-cxR"/>
                         <outlet property="windDirectionLabel" destination="Yit-3S-F0b" id="CK5-Sn-IAO"/>
